@@ -487,8 +487,7 @@ Graph depth: 3 hops | Profile: planning</div>
 </script>
 <script type="module">
 import * as THREE from 'three';
-import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
-import {DRACOLoader} from 'three/addons/loaders/DRACOLoader.js';
+import {FBXLoader} from 'three/addons/loaders/FBXLoader.js';
 
 const canvas=document.getElementById('alien-canvas');
 const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
@@ -548,10 +547,8 @@ void main(){
 
 const holoU={uMap:{value:null},uTime:{value:0},uGlitch:{value:0},uC1:{value:new THREE.Color(0x7B2FFF)},uC2:{value:new THREE.Color(0x39FF14)},uAlpha:{value:.92}};
 
-const draco=new DRACOLoader();
-draco.setDecoderPath('https://unpkg.com/three@0.160.0/examples/jsm/libs/draco/');
-const gltfLoader=new GLTFLoader();
-gltfLoader.setDRACOLoader(draco);
+const texLoader=new THREE.TextureLoader();
+texLoader.load('model/SK_Alien_Material.005_BaseColor.png',tex=>{tex.colorSpace=THREE.SRGBColorSpace;holoU.uMap.value=tex});
 
 /* Particles */
 const PC=220;
@@ -574,16 +571,11 @@ const particles=new THREE.Points(pGeo,new THREE.PointsMaterial({
   blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true}));
 scene.add(particles);
 
-/* GLTF Model */
-gltfLoader.load('model-opt/alien.gltf',gltf=>{
-  alienModel=gltf.scene;
+/* FBX Model */
+new FBXLoader().load('model/SK_Alien.fbx',fbx=>{
+  alienModel=fbx;
   const holoMat=new THREE.ShaderMaterial({vertexShader:holoVert,fragmentShader:holoFrag,uniforms:holoU,transparent:true,side:THREE.DoubleSide});
-  alienModel.traverse(c=>{
-    if(c.isMesh){
-      if(c.material.map){c.material.map.colorSpace=THREE.SRGBColorSpace;holoU.uMap.value=c.material.map;}
-      c.material=holoMat;
-    }
-  });
+  alienModel.traverse(c=>{if(c.isMesh)c.material=holoMat});
   const box=new THREE.Box3().setFromObject(alienModel);
   const center=new THREE.Vector3(),size=new THREE.Vector3();
   box.getCenter(center);box.getSize(size);
@@ -650,7 +642,7 @@ gltfLoader.load('model-opt/alien.gltf',gltf=>{
   pg.position.y=-box.min.y-8;scene.add(pg);
 
   window._proj={cone,cone2,disc,fr,fr2,pg,pl,pl2,cU,c2U,dU};
-},undefined,err=>console.error('GLTF:',err));
+},undefined,err=>console.error('FBX:',err));
 
 /* Render loop */
 function tick(t){

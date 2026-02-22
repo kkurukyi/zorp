@@ -2,7 +2,18 @@
 alien/
 alien2/
 bg/
-model/
+model-opt/
+
+# Unused textures (hologram shader only uses BaseColor)
+model/SK_Alien_Material.005_Normal.png
+model/SK_Alien_Material.005_Roughness.png
+model/SK_Alien_Material.005_Metallic.png
+
+# Unused font weights
+font/Orbitron/Orbitron-VariableFont_wght.ttf
+font/Orbitron/static/Orbitron-Black.ttf
+font/Orbitron/static/Orbitron-ExtraBold.ttf
+font/Orbitron/README.txt
 
 # Video files (replaced with shader)
 *.mp4

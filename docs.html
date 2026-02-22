@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zorp — Documentation</title>
+<link rel="icon" type="image/png" href="zorp.png">
+<link rel="apple-touch-icon" href="zorp.png">
+<style>
+@font-face{font-family:'Blaka';src:url('font/Blaka/Blaka-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Syncopate';src:url('font/Syncopate/Syncopate-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Syncopate';src:url('font/Syncopate/Syncopate-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Orbitron';src:url('font/Orbitron/static/Orbitron-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Orbitron';src:url('font/Orbitron/static/Orbitron-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Orbitron';src:url('font/Orbitron/static/Orbitron-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap}
+@font-face{font-family:'Orbitron';src:url('font/Orbitron/static/Orbitron-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#06060C;
+  --surface:rgba(14,14,24,.55);
+  --border:rgba(123,47,255,.12);
+  --border-h:rgba(123,47,255,.35);
+  --purple:#7B2FFF;
+  --green:#39FF14;
+  --cyan:#00f0ff;
+  --white:#E8E8F0;
+  --dim:rgba(232,232,240,.45);
+  --faint:rgba(232,232,240,.12);
+  --blaka:'Blaka',cursive;
+  --orb:'Orbitron',sans-serif;
+  --syn:'Syncopate',sans-serif;
+  --body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --mono:'SF Mono','Cascadia Code','Consolas',monospace;
+  --r:14px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:rgba(123,47,255,.3)}
+a{color:var(--white);text-decoration:none}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2.5rem;display:flex;align-items:center;gap:1rem;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(6,6,12,.85);border-bottom:1px solid var(--border)}
+.nav-brand{font-family:var(--blaka);font-size:1.4rem;display:flex;align-items:center;gap:.6rem;color:var(--white)}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green)}
+.nav-links{display:flex;gap:1.8rem;margin-left:auto;align-items:center}
+.nav-links a{font-size:.7rem;font-weight:500;color:var(--dim);transition:color .2s;font-family:var(--orb);letter-spacing:.04em}
+.nav-links a:hover{color:var(--white)}
+.nav-links a.active{color:var(--white)}
+.nav-cta{padding:.45rem 1.1rem;border-radius:8px;background:var(--purple);color:#fff!important;font-weight:600;font-size:.68rem;transition:all .2s}
+.nav-cta:hover{box-shadow:0 0 20px rgba(123,47,255,.4);transform:translateY(-1px)}
+
+/* ── LAYOUT ── */
+.docs-layout{display:grid;grid-template-columns:240px 1fr;gap:0;min-height:100vh;padding-top:60px}
+
+/* ── SIDEBAR ── */
+.sidebar{position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto;padding:2rem 1.5rem;border-right:1px solid var(--border);scrollbar-width:none;-ms-overflow-style:none}
+.sidebar::-webkit-scrollbar{display:none}
+.sidebar-label{font-family:var(--orb);font-size:.48rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);margin-bottom:.6rem;margin-top:1.5rem}
+.sidebar-label:first-child{margin-top:0}
+.sidebar a{display:block;padding:.35rem .7rem;font-size:.72rem;color:var(--dim);border-radius:6px;transition:all .2s;margin-bottom:2px}
+.sidebar a:hover{color:var(--white);background:rgba(123,47,255,.06)}
+.sidebar a.active{color:var(--white);background:rgba(123,47,255,.1);border-left:2px solid var(--purple);padding-left:calc(.7rem - 2px)}
+
+/* ── CONTENT ── */
+.docs-content{padding:3rem 4rem 6rem;max-width:900px}
+.docs-content section{margin-bottom:4rem}
+.docs-content h1{font-family:var(--blaka);font-size:2.8rem;line-height:1;margin-bottom:.5rem}
+.docs-content h1 span{color:var(--purple)}
+.docs-hero-desc{color:var(--dim);font-size:.9rem;line-height:1.7;margin-bottom:2rem;max-width:550px}
+.docs-content h2{font-family:var(--orb);font-size:.85rem;font-weight:700;letter-spacing:-.02em;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+.docs-content h3{font-family:var(--orb);font-size:.72rem;font-weight:700;margin:1.8rem 0 .8rem}
+.docs-content p{font-size:.82rem;color:var(--dim);line-height:1.75;margin-bottom:1rem}
+
+.code-block{background:rgba(10,10,18,.7);border:1px solid var(--border);border-radius:var(--r);padding:1.3rem 1.5rem;font-family:var(--mono);font-size:.68rem;line-height:1.7;color:var(--dim);overflow-x:auto;margin:1rem 0 1.5rem;white-space:pre;position:relative;backdrop-filter:blur(8px)}
+.code-block::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--purple),transparent)}
+.code-block .cm{color:rgba(232,232,240,.2)}
+.code-block .kw{color:var(--purple)}
+.code-block .st{color:var(--green)}
+
+.cmd-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1rem}
+.cmd-group h4{font-family:var(--orb);font-size:.68rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.6rem;color:var(--white)}
+.cmd-group ul{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.cmd-group li{font-size:.72rem;color:var(--dim);padding:.25rem 0;display:flex;align-items:baseline;gap:.5rem}
+.cmd-group li code{font-family:var(--mono);color:var(--white);font-size:.62rem;background:rgba(123,47,255,.1);padding:.15rem .4rem;border-radius:4px;flex-shrink:0}
+
+.profile-table{width:100%;border-collapse:collapse;margin:1rem 0}
+.profile-table th,.profile-table td{padding:.6rem 1rem;text-align:left;border-bottom:1px solid var(--border);font-size:.72rem}
+.profile-table th{color:var(--white);font-weight:700;font-family:var(--orb);font-size:.6rem;letter-spacing:.03em;text-transform:uppercase}
+.profile-table td:first-child{font-family:var(--mono);color:var(--purple)}
+.profile-table td{color:var(--dim)}
+.profile-table tr:hover td{color:var(--white);background:rgba(123,47,255,.03)}
+
+.int-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:1rem}
+.int-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;transition:all .3s;backdrop-filter:blur(8px)}
+.int-card:hover{border-color:var(--border-h);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.int-card h4{font-family:var(--orb);font-size:.7rem;font-weight:700;letter-spacing:-.02em;margin-bottom:.5rem}
+.int-card p{font-size:.7rem;color:var(--dim);line-height:1.65}
+.int-card code{font-family:var(--mono);font-size:.6rem;background:rgba(123,47,255,.1);padding:.12rem .35rem;border-radius:3px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .docs-layout{grid-template-columns:1fr}
+  .sidebar{position:relative;top:0;height:auto;border-right:none;border-bottom:1px solid var(--border);padding:1.5rem;display:flex;flex-wrap:wrap;gap:.3rem .8rem}
+  .sidebar-label{width:100%;margin-top:.8rem}
+  .sidebar a{padding:.3rem .6rem;font-size:.65rem}
+  .docs-content{padding:2rem 1.5rem 4rem}
+  .cmd-grid{grid-template-columns:1fr}
+  .int-cards{grid-template-columns:1fr}
+}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand"><span class="nav-dot"></span> Zorp</a>
+  <div class="nav-links">
+    <a href="index.html#features">Features</a>
+    <a href="docs.html" class="active">Docs</a>
+    <a href="https://x.com/zorp129684" target="_blank" rel="noopener">Twitter</a>
+    <a href="#" class="nav-cta">$ZORP</a>
+  </div>
+</nav>
+
+<div class="docs-layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-label">Getting Started</div>
+  <a href="#quickstart" class="active">Quick Start</a>
+  <a href="#cli">CLI Reference</a>
+
+  <div class="sidebar-label">Architecture</div>
+  <a href="#vault">Vault Structure</a>
+  <a href="#observations">Observations</a>
+
+  <div class="sidebar-label">Workflow</div>
+  <a href="#sessions">Sessions</a>
+  <a href="#context">Context Profiles</a>
+
+  <div class="sidebar-label">Extend</div>
+  <a href="#integrations">Integrations</a>
+  <a href="#replay">Replay Sources</a>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="docs-content">
+
+  <section id="overview">
+    <h1>Zorp <span>Docs</span></h1>
+    <p class="docs-hero-desc">Everything you need to set up, configure, and extend Zorp — structured memory infrastructure for autonomous AI agents.</p>
+  </section>
+
+  <!-- QUICK START -->
+  <section id="quickstart">
+    <h2>Quick Start</h2>
+    <p>Get up and running in under a minute. Clone, init, and start remembering.</p>
+    <div class="code-block"><span class="cm"># Clone the repository</span>
+<span class="kw">git clone</span> https://github.com/zorp-code/zorp.git
+<span class="kw">cd</span> zorp
+
+<span class="cm"># Initialize a new vault</span>
+<span class="kw">zorp init</span> ~/memory --name my-brain
+
+<span class="cm"># Start a session</span>
+<span class="kw">zorp wake</span>
+
+<span class="cm"># Store a decision</span>
+<span class="kw">zorp remember</span> decision <span class="st">"Use PostgreSQL"</span> --content <span class="st">"Chosen for JSONB"</span>
+
+<span class="cm"># Search</span>
+<span class="kw">zorp search</span> <span class="st">"postgresql"</span>
+<span class="kw">zorp vsearch</span> <span class="st">"what did we decide about storage"</span>
+
+<span class="cm"># End session</span>
+<span class="kw">zorp sleep</span> <span class="st">"finished auth plan"</span> --next <span class="st">"implement migration"</span></div>
+  </section>
+
+  <!-- CLI REFERENCE -->
+  <section id="cli">
+    <h2>CLI Reference</h2>
+    <p>Full command reference organized by category.</p>
+    <div class="cmd-grid">
+      <div class="cmd-group"><h4>Core</h4><ul>
+        <li><code>init</code> Create or initialize a vault</li>
+        <li><code>setup</code> Bootstrap Obsidian config</li>
+        <li><code>store</code> Store a raw memory entry</li>
+        <li><code>remember</code> Store a typed memory</li>
+        <li><code>search</code> Full-text search</li>
+        <li><code>vsearch</code> Vector / semantic search</li>
+        <li><code>list</code> List vault entries</li>
+        <li><code>get</code> Retrieve a specific entry</li>
+        <li><code>stats</code> Vault statistics</li>
+      </ul></div>
+      <div class="cmd-group"><h4>Context & Memory</h4><ul>
+        <li><code>context</code> Retrieve relevant context</li>
+        <li><code>inject</code> Dynamic prompt injection</li>
+        <li><code>observe</code> Run observation pipeline</li>
+        <li><code>reflect</code> Generate weekly reflection</li>
+        <li><code>graph</code> Explore entity graph</li>
+        <li><code>entities</code> List tracked entities</li>
+        <li><code>link</code> Create entity links</li>
+        <li><code>embed</code> Generate embeddings</li>
+      </ul></div>
+      <div class="cmd-group"><h4>Session Management</h4><ul>
+        <li><code>wake</code> Start a new session</li>
+        <li><code>sleep</code> End session with summary</li>
+        <li><code>checkpoint</code> Save progress mid-session</li>
+        <li><code>recover</code> Recover interrupted session</li>
+        <li><code>handoff</code> Transition between agents</li>
+        <li><code>status</code> Current session status</li>
+        <li><code>recap</code> Session recap</li>
+      </ul></div>
+      <div class="cmd-group"><h4>Work Management</h4><ul>
+        <li><code>task add</code> Create a task</li>
+        <li><code>task list</code> List tasks</li>
+        <li><code>backlog</code> Manage backlog</li>
+        <li><code>blocked</code> Show blocked items</li>
+        <li><code>project</code> Manage projects</li>
+        <li><code>kanban sync</code> Sync kanban board</li>
+        <li><code>canvas</code> Generate dashboard</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <!-- VAULT STRUCTURE -->
+  <section id="vault">
+    <h2>Vault Structure</h2>
+    <p>Every Zorp vault follows a consistent directory layout. Memories are organized by type for easy browsing and Obsidian compatibility.</p>
+    <div class="code-block">vault/
+├── .zorp/              <span class="cm"># Internal state & config</span>
+├── decisions/           <span class="cm"># Key architectural choices</span>
+├── lessons/             <span class="cm"># Insights & learnings</span>
+├── people/              <span class="cm"># Contact & relationship data</span>
+├── projects/            <span class="cm"># Active project tracking</span>
+├── handoffs/            <span class="cm"># Session transition notes</span>
+├── inbox/               <span class="cm"># Quick captures</span>
+└── templates/           <span class="cm"># Document templates</span></div>
+  </section>
+
+  <!-- OBSERVATIONS -->
+  <section id="observations">
+    <h2>Observation Format</h2>
+    <p>Raw transcripts pass through the observation pipeline and become scored, typed entries. Each observation carries a confidence (c) and importance (i) score.</p>
+    <div class="code-block"><span class="cm"># Each observation is scored for confidence (c) and importance (i)</span>
+- [<span class="kw">decision</span>|c=<span class="st">0.9</span>|i=<span class="st">0.8</span>] Use PostgreSQL for primary datastore
+- [<span class="kw">lesson</span>|c=<span class="st">0.7</span>|i=<span class="st">0.6</span>] Batch inserts outperform individual writes by 12x
+- [<span class="kw">fact</span>|c=<span class="st">1.0</span>|i=<span class="st">0.4</span>] API rate limit is 1000 req/min</div>
+  </section>
+
+  <!-- SESSIONS -->
+  <section id="sessions">
+    <h2>Sessions</h2>
+    <p>Sessions are the heartbeat of agent memory. Wake to load context, checkpoint to save progress, sleep to persist everything.</p>
+    <div class="code-block"><span class="kw">zorp wake</span>                                    <span class="cm"># Start session</span>
+<span class="kw">zorp checkpoint</span> --working-on <span class="st">"feature X"</span>       <span class="cm"># Save progress</span>
+<span class="kw">zorp context</span> <span class="st">"authentication"</span>                  <span class="cm"># Retrieve context</span>
+<span class="kw">zorp sleep</span> <span class="st">"completed auth"</span> --next <span class="st">"tests"</span>    <span class="cm"># End session</span>
+<span class="kw">zorp recover</span>                                  <span class="cm"># Recover interrupted</span>
+<span class="kw">zorp handoff</span> --to agent-02                     <span class="cm"># Hand off</span></div>
+  </section>
+
+  <!-- CONTEXT PROFILES -->
+  <section id="context">
+    <h2>Context Profiles</h2>
+    <p>Profiles control what gets surfaced during context retrieval. Choose the right profile for the task at hand.</p>
+    <table class="profile-table">
+      <thead><tr><th>Profile</th><th>Purpose</th><th>Use Case</th></tr></thead>
+      <tbody>
+        <tr><td>default</td><td>Balanced retrieval</td><td>General tasks</td></tr>
+        <tr><td>planning</td><td>Broader strategic context</td><td>Architecture decisions</td></tr>
+        <tr><td>incident</td><td>Recent events and blockers</td><td>Debugging</td></tr>
+        <tr><td>handoff</td><td>Session transition context</td><td>Agent-to-agent continuity</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- INTEGRATIONS -->
+  <section id="integrations">
+    <h2>Integrations</h2>
+    <p>Zorp plugs into your existing workflow. First-class support for Obsidian, OpenClaw, and remote sync.</p>
+    <div class="int-cards">
+      <div class="int-card">
+        <h4>Obsidian</h4>
+        <p>Graph themes (<code>neural</code>, <code>minimal</code>), canvas dashboards, bidirectional kanban sync. Run <code>zorp setup --theme neural</code>.</p>
+      </div>
+      <div class="int-card">
+        <h4>OpenClaw</h4>
+        <p>First-class hook pack. Install with <code>openclaw hooks install zorp</code>. Auto session lifecycle and context injection.</p>
+      </div>
+      <div class="int-card">
+        <h4>Tailscale + WebDAV</h4>
+        <p>Serve vault over Tailscale for mobile sync. Run <code>zorp tailscale-serve --vault ~/memory</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPLAY -->
+  <section id="replay">
+    <h2>Replay Sources</h2>
+    <p>Ingest past conversations from any major AI platform. Transcripts become searchable, structured memory.</p>
+    <div class="code-block"><span class="kw">zorp replay</span> --source <span class="st">claude</span>      <span class="cm"># Anthropic Claude</span>
+<span class="kw">zorp replay</span> --source <span class="st">chatgpt</span>    <span class="cm"># OpenAI ChatGPT</span>
+<span class="kw">zorp replay</span> --source <span class="st">opencode</span>   <span class="cm"># OpenCode sessions</span>
+<span class="kw">zorp replay</span> --source <span class="st">openclaw</span>   <span class="cm"># OpenClaw transcripts</span></div>
+  </section>
+
+</main>
+</div>
+
+<script>
+/* Sidebar active state on scroll */
+const sections=document.querySelectorAll('.docs-content section[id]');
+const sidebarLinks=document.querySelectorAll('.sidebar a');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      sidebarLinks.forEach(l=>l.classList.remove('active'));
+      const link=document.querySelector('.sidebar a[href="#'+e.target.id+'"]');
+      if(link)link.classList.add('active');
+    }
+  });
+},{threshold:.2,rootMargin:'-80px 0px -60% 0px'});
+sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

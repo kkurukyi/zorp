@@ -1,0 +1,22 @@
+# Source model folders (not used by site)
+alien/
+alien2/
+bg/
+model/
+
+# Video files (replaced with shader)
+*.mp4
+
+# Unity packages
+HoloFX_Pro*
+
+# Extra source/temp folders
+Blaka,Orbitron,Syncopate/
+crab/
+crystal/
+Syncopate-Bold.ttf
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

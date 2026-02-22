@@ -1,0 +1,626 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 53,
+      "type": "MAT4",
+      "byteOffset": 0
+    },
+    {
+      "componentType": 5125,
+      "count": 57168,
+      "type": "SCALAR"
+    },
+    {
+      "componentType": 5123,
+      "count": 10558,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 10558,
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 10558,
+      "max": [
+        91.82999791809857,
+        185.202139729704,
+        34.91233521660596
+      ],
+      "min": [
+        -91.80987440987977,
+        -0.3393289093628824,
+        -24.85212027474794
+      ],
+      "type": "VEC3"
+    },
+    {
+      "componentType": 5126,
+      "count": 10558,
+      "type": "VEC4"
+    },
+    {
+      "componentType": 5126,
+      "count": 10558,
+      "type": "VEC2"
+    },
+    {
+      "componentType": 5126,
+      "count": 10558,
+      "type": "VEC4"
+    }
+  ],
+  "asset": {
+    "generator": "fab-model-conversion",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 3392,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 3392,
+      "byteLength": 358366
+    }
+  ],
+  "buffers": [
+    {
+      "name": "alien",
+      "byteLength": 361760,
+      "uri": "alien.bin"
+    }
+  ],
+  "images": [
+    {
+      "name": "lambert1_baseColor",
+      "mimeType": "image/webp",
+      "uri": "lambert1_baseColor.webp"
+    },
+    {
+      "name": "lambert1_metallicRoughness",
+      "mimeType": "image/webp",
+      "uri": "lambert1_metallicRoughness.webp"
+    },
+    {
+      "name": "lambert1_normal",
+      "mimeType": "image/webp",
+      "uri": "lambert1_normal.webp"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "lambert1",
+      "normalTexture": {
+        "index": 2,
+        "texCoord": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0,
+          "texCoord": 0
+        },
+        "metallicRoughnessTexture": {
+          "index": 1,
+          "texCoord": 0
+        },
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "metallicFactor": 1,
+        "roughnessFactor": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "SK_Alien_lambert1_0",
+      "primitives": [
+        {
+          "attributes": {
+            "JOINTS_0": 2,
+            "NORMAL": 3,
+            "POSITION": 4,
+            "TANGENT": 5,
+            "TEXCOORD_0": 6,
+            "WEIGHTS_0": 7
+          },
+          "indices": 1,
+          "material": 0,
+          "mode": 4,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "JOINTS_0": 0,
+                "NORMAL": 1,
+                "POSITION": 2,
+                "TANGENT": 3,
+                "TEXCOORD_0": 4,
+                "WEIGHTS_0": 5
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1,
+        4
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        2.220446049250313e-16,
+        -1,
+        0,
+        0,
+        1,
+        2.220446049250313e-16,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.009999999776482582,
+        0,
+        0,
+        -0.009999999776482582,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "46c98e45c6174d41ae935b4629105a54.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        5
+      ],
+      "name": "Object_3"
+    },
+    {
+      "mesh": 0,
+      "name": "Object_4",
+      "skin": 0
+    },
+    {
+      "children": [
+        6
+      ],
+      "name": "root_01"
+    },
+    {
+      "children": [
+        7,
+        52,
+        55
+      ],
+      "name": "pelvis_02"
+    },
+    {
+      "children": [
+        8
+      ],
+      "name": "spine1_03"
+    },
+    {
+      "children": [
+        9
+      ],
+      "name": "spine2_04"
+    },
+    {
+      "children": [
+        10,
+        12,
+        32
+      ],
+      "name": "spine3_05"
+    },
+    {
+      "children": [
+        11
+      ],
+      "name": "neck_06"
+    },
+    {
+      "children": [],
+      "name": "head_07"
+    },
+    {
+      "children": [
+        13
+      ],
+      "name": "shoulder_r_09"
+    },
+    {
+      "children": [
+        14
+      ],
+      "name": "upperarm_r_010"
+    },
+    {
+      "children": [
+        15
+      ],
+      "name": "forearm_r_011"
+    },
+    {
+      "children": [
+        16,
+        20,
+        24,
+        28
+      ],
+      "name": "hand_r_012"
+    },
+    {
+      "children": [
+        17
+      ],
+      "name": "index1_r_013"
+    },
+    {
+      "children": [
+        18
+      ],
+      "name": "index2_r_014"
+    },
+    {
+      "children": [
+        19
+      ],
+      "name": "index3_r_015"
+    },
+    {
+      "name": "index4_r_016"
+    },
+    {
+      "children": [
+        21
+      ],
+      "name": "middle1_r_017"
+    },
+    {
+      "children": [
+        22
+      ],
+      "name": "middle2_r_018"
+    },
+    {
+      "children": [
+        23
+      ],
+      "name": "middle3_r_019"
+    },
+    {
+      "name": "middle4_r_020"
+    },
+    {
+      "children": [
+        25
+      ],
+      "name": "ring1_r_021"
+    },
+    {
+      "children": [
+        26
+      ],
+      "name": "ring2_r_022"
+    },
+    {
+      "children": [
+        27
+      ],
+      "name": "ring3_r_023"
+    },
+    {
+      "name": "ring4_r_024"
+    },
+    {
+      "children": [
+        29
+      ],
+      "name": "pinky1_r_025"
+    },
+    {
+      "children": [
+        30
+      ],
+      "name": "pinky2_r_026"
+    },
+    {
+      "children": [
+        31
+      ],
+      "name": "pinky3_r_027"
+    },
+    {
+      "name": "pinky4_r_028"
+    },
+    {
+      "children": [
+        33
+      ],
+      "name": "shoulder_l_033"
+    },
+    {
+      "children": [
+        34
+      ],
+      "name": "upperarm_l_034"
+    },
+    {
+      "children": [
+        35
+      ],
+      "name": "forearm_l_035"
+    },
+    {
+      "children": [
+        36,
+        40,
+        44,
+        48
+      ],
+      "name": "hand_r1_036"
+    },
+    {
+      "children": [
+        37
+      ],
+      "name": "index1_l_037"
+    },
+    {
+      "children": [
+        38
+      ],
+      "name": "index2_l_038"
+    },
+    {
+      "children": [
+        39
+      ],
+      "name": "index3_l_039"
+    },
+    {
+      "name": "index4_l_040"
+    },
+    {
+      "children": [
+        41
+      ],
+      "name": "middle1_l_041"
+    },
+    {
+      "children": [
+        42
+      ],
+      "name": "middle2_l_042"
+    },
+    {
+      "children": [
+        43
+      ],
+      "name": "middle3_l_043"
+    },
+    {
+      "name": "middle4_l_044"
+    },
+    {
+      "children": [
+        45
+      ],
+      "name": "ring1_l_045"
+    },
+    {
+      "children": [
+        46
+      ],
+      "name": "ring2_l_046"
+    },
+    {
+      "children": [
+        47
+      ],
+      "name": "ring3_l_047"
+    },
+    {
+      "name": "ring4_l_048"
+    },
+    {
+      "children": [
+        49
+      ],
+      "name": "pinky1_l_049"
+    },
+    {
+      "children": [
+        50
+      ],
+      "name": "pinky2_l_050"
+    },
+    {
+      "children": [
+        51
+      ],
+      "name": "pinky3_l_051"
+    },
+    {
+      "name": "pinky4_l_052"
+    },
+    {
+      "children": [
+        53
+      ],
+      "name": "thigh_l_057"
+    },
+    {
+      "children": [
+        54
+      ],
+      "name": "calf_l_058"
+    },
+    {
+      "children": [],
+      "name": "foot_l_00"
+    },
+    {
+      "children": [
+        56
+      ],
+      "name": "thigh_r_061"
+    },
+    {
+      "children": [
+        57
+      ],
+      "name": "calf_r_062"
+    },
+    {
+      "children": [],
+      "name": "foot_r_063"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "skins": [
+    {
+      "inverseBindMatrices": 0,
+      "joints": [
+        11,
+        32,
+        33,
+        6,
+        55,
+        5,
+        7,
+        9,
+        8,
+        12,
+        56,
+        13,
+        52,
+        14,
+        53,
+        10,
+        34,
+        57,
+        15,
+        28,
+        24,
+        29,
+        16,
+        20,
+        17,
+        21,
+        22,
+        30,
+        18,
+        25,
+        31,
+        26,
+        27,
+        23,
+        19,
+        54,
+        35,
+        48,
+        44,
+        49,
+        36,
+        40,
+        37,
+        41,
+        42,
+        50,
+        38,
+        45,
+        51,
+        46,
+        47,
+        43,
+        39
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ]
+}
